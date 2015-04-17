@@ -1,0 +1,63 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#0099cc"
+    tools:context=".MainMenuActivity">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@drawable/jungle">
+
+        <Button
+            android:layout_width="600dp"
+            android:layout_height="400dp"
+            android:id="@+id/button_play"
+            android:background="@color/orange_play"
+            android:onClick="onClick"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="visible"
+            android:clickable="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Release"
+            android:id="@+id/textView"
+            android:textColor="#ffffffff"
+            android:textSize="70dp"
+            android:layout_above="@+id/textView2"
+            android:layout_centerHorizontal="true"
+            android:typeface="sans" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The"
+            android:id="@+id/textView2"
+            android:textColor="#ffffffff"
+            android:textSize="70dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:typeface="sans" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Beast!"
+            android:id="@+id/textView3"
+            android:textColor="#ffffffff"
+            android:textSize="70dp"
+            android:layout_below="@+id/textView2"
+            android:layout_centerHorizontal="true"
+            android:typeface="sans" />
+
+    </RelativeLayout>
+
+</FrameLayout>
