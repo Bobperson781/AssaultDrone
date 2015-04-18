@@ -87,37 +87,55 @@ public class AnalogStick extends View {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        int actionType = event.getAction();
+    public boolean onTouchEvent( MotionEvent event) {
 
-        if (actionType == MotionEvent.ACTION_MOVE) {
-            double tempTouchX = touchX;
-            double tempTouchY = touchY;
+                //checks the bounds of the event touch, and only do this when in that the first half of screen
+                //
+                float xAxis = event.getX();
 
-            touchX = stickOriginX - event.getX();
-            touchY = stickOriginY - event.getY();
+                DisplayMetrics metrics = getContext().getResources()
+                .getDisplayMetrics();
+                int width = metrics.widthPixels;
 
-            if (!(Math.abs(touchX) > maxStickDistance || Math.abs(touchY) > maxStickDistance)) {
-                int tempXSign = touchX >= 0 ? 1 : -1;
-                int tempYSign = touchY >= 0 ? 1 : -1;
+                int actionType = event.getAction();
 
-                touchX = stickOriginX + Math.min(Math.abs(touchX), 25)
-                        * (-tempXSign);
-                touchY = stickOriginY + Math.min(Math.abs(touchY), 25)
-                        * (-tempYSign);
+                if( xAxis >= width/2){
+                    return super.onTouchEvent(event);
+                }
 
-                invalidate();
-            } else {
-                touchX = tempTouchX;
-                touchY = tempTouchY;
-            }
-            xCor = touchX - stickOriginX;
-            yCor = touchY - stickOriginY;
-        } else if (actionType == MotionEvent.ACTION_UP) {
-            returnToCenter();
-        }
-        return super.onTouchEvent(event);
-        //return true;
+                if (actionType == MotionEvent.ACTION_MOVE)
+
+                {
+                    double tempTouchX = touchX;
+                    double tempTouchY = touchY;
+
+                    touchX = stickOriginX - event.getX();
+                    touchY = stickOriginY - event.getY();
+
+                    if (!(Math.abs(touchX) > maxStickDistance || Math.abs(touchY) > maxStickDistance)) {
+                        int tempXSign = touchX >= 0 ? 1 : -1;
+                        int tempYSign = touchY >= 0 ? 1 : -1;
+
+                        touchX = stickOriginX + Math.min(Math.abs(touchX), 25)
+                                * (-tempXSign);
+                        touchY = stickOriginY + Math.min(Math.abs(touchY), 25)
+                                * (-tempYSign);
+
+                        invalidate();
+                    } else {
+                        touchX = tempTouchX;
+                        touchY = tempTouchY;
+                    }
+                    xCor = touchX - stickOriginX;
+                    yCor = touchY - stickOriginY;
+                } else if (actionType == MotionEvent.ACTION_UP)
+
+                {
+                    returnToCenter();
+                }
+
+        //return super.onTouchEvent(event);
+        return true;
     }
 
     private void returnToCenter() {

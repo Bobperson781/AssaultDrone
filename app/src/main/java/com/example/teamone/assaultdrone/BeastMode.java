@@ -1,12 +1,12 @@
 package com.example.teamone.assaultdrone;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,19 +18,25 @@ public class BeastMode extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beast_mode);
 
-        TextView x=(TextView)findViewById(R.id.x);
-        TextView y=(TextView)findViewById(R.id.y);
+        final TextView x=(TextView)findViewById(R.id.x);
+        final TextView y=(TextView)findViewById(R.id.y);
 
-        RelativeLayout rl = (RelativeLayout) findViewById(R.id.beast);
-        rl.addView(new com.example.teamone.assaultdrone.AnalogStick(this,x,y));
+        final RelativeLayout rl = (RelativeLayout) findViewById(R.id.beast);
+        //Thread analog = new Thread(new Runnable(){
+
+        //public void run() {
+        rl.addView(new com.example.teamone.assaultdrone.AnalogStick(this, x, y));
         //Button up =
+         //}
+        //});
     }
+
 
     // Should send a 1 until otherwise toggled
     public void LaserOnToggle(View v){
         Button button = (Button) v;
         switch (button.getId()) {
-            case R.id.button_play:
+            case R.id.Laser:
 
                 break;
             default:
@@ -42,9 +48,8 @@ public class BeastMode extends Activity {
     public void FireOnClick(View v){
         Button button = (Button) v;
         switch (button.getId()) {
-            case R.id.button_play:
-                Intent i = new Intent(this, main_menu.class);
-                startActivity(i);// does this save?
+            case R.id.Fire:
+
                 break;
             default:
                 break;
@@ -53,9 +58,9 @@ public class BeastMode extends Activity {
 
     // Should send Direction int = 1000 (Binary)
     public void UpOnClick(View v){
-        Button button = (Button) v;
+        ImageButton button = (ImageButton) v;
         switch (button.getId()) {
-            case R.id.button_play:
+            case R.id.Up:
 
                 break;
             default:
@@ -65,9 +70,9 @@ public class BeastMode extends Activity {
 
     // Should send Direction int = 0100 (Binary)
     public void DownOnClick(View v){
-        Button button = (Button) v;
+        ImageButton button = (ImageButton) v;
         switch (button.getId()) {
-            case R.id.button_play:
+            case R.id.Down:
 
                 break;
             default:
@@ -77,9 +82,9 @@ public class BeastMode extends Activity {
 
     // Should send Direction int = 0010 (Binary)
     public void LeftOnClick(View v){
-        Button button = (Button) v;
+        ImageButton button = (ImageButton) v;
         switch (button.getId()) {
-            case R.id.button_play:
+            case R.id.Left:
 
                 break;
             default:
@@ -89,9 +94,9 @@ public class BeastMode extends Activity {
 
     // Should send Direction int = 0001 (Binary)
     public void RightOnClick(View v){
-        Button button = (Button) v;
+        ImageButton button = (ImageButton) v;
         switch (button.getId()) {
-            case R.id.button_play:
+            case R.id.Right:
 
                 break;
             default:
