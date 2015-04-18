@@ -91,15 +91,19 @@ public class AnalogStick extends View {
 
                 //checks the bounds of the event touch, and only do this when in that the first half of screen
                 //
-                float xAxis = event.getX();
+                int pointIndex = event.getActionIndex();
+                float xAxis = event.getX(pointIndex);
 
                 DisplayMetrics metrics = getContext().getResources()
-                .getDisplayMetrics();
+                    .getDisplayMetrics();
                 int width = metrics.widthPixels;
 
                 int actionType = event.getAction();
 
+                //TODO if user has a different touch on screen after analog stick was used
+                // the analog stick is stick in it's current position until touched again.
                 if( xAxis >= width/2){
+
                     return super.onTouchEvent(event);
                 }
 
@@ -133,6 +137,7 @@ public class AnalogStick extends View {
                 {
                     returnToCenter();
                 }
+        invalidate();
 
         //return super.onTouchEvent(event);
         return true;
