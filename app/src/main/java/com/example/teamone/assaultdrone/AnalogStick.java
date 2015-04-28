@@ -16,7 +16,7 @@ public class AnalogStick extends View {
     private double touchX, touchY;
     private int stickOriginX, stickOriginY;
     private int px, py;
-    private double xCor, yCor;
+    private static double xCor, yCor;
 
     private static final int maxStickDistance = 200;
     private Bitmap base;
@@ -41,6 +41,9 @@ public class AnalogStick extends View {
         super(context, attrs, defStyle);
         init();
     }
+
+    public static double getXCor(){ return xCor;}
+    public static double getYCor(){ return yCor;}
 
     // initialize the view
     private void init() {

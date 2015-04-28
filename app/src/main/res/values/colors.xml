@@ -4,5 +4,7 @@
     <color name="orange_play">#00ff9900</color>
     <color name="orange_highscores">#c9ffad33</color>
     <color name="orange_help">#c9ffc266</color>
+    <color name="dark_blue">#0c377b</color>
+    <color name="white">#FFFFFF</color>
 
 </resources>
